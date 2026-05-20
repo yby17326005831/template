@@ -2,7 +2,7 @@ class LTree:
     def __init__(self,arr,merge = max):
         self.arr = arr
         self.merge = merge
-        self.root = LTree.Node(0,len(arr),self)
+        self.root = self.Node(0,len(arr),self)
     def find(self,l,r):
         return self.root.find(l,r)
     def update(self,idx,v):
@@ -16,7 +16,7 @@ class LTree:
                 self.v = outer.arr[l]
             else:
                 mid = (l + r) // 2
-                self.lc,self.rc = LTree.Node(l,mid,outer),LTree.Node(mid + 1,r,outer)
+                self.lc,self.rc = outer.Node(l,mid,outer),outer.Node(mid + 1,r,outer)
                 self.v = outer.merge(self.lc.v,self.rc.v)
         def find(self,l,r):
             if self.l == l and self.r == r:
